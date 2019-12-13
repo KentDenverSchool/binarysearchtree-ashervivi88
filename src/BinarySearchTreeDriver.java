@@ -17,91 +17,48 @@ public class BinarySearchTreeDriver {
             Scanner sc = new Scanner(file);
             BinarySearchTree m = new BinarySearchTree();
 
+            boolean hasSeen999 = false;
+
+            while (sc.hasNextLine() && sc.nextInt()!=-999) {
+                int key = sc.nextInt();
+                int value = sc.nextInt();
+                int size = sc.nextInt();
+                int min = sc.nextInt();
+                int max = sc.nextInt();
+                m.put(key, value);
+                results+= "\n"
+                        + " Answer should be: " + value + ", Actual: " + m.get(key)
+                        + "\n"
+                        + " Answer should be: " + size + ", Actual: " + m.size()
+                        + "\n"
+                        + " Answer should be: " + min + ", Actual: " + m.min()
+                        + "\n"
+                        + " Answer should be: " + max + ", Actual: " + m.max()
+                        + "\n";
+                }
             while (sc.hasNextLine()) {
-                String command = sc.nextLine();
-
-                if(command.equals("put")){
-                    Comparable correct = sc.nextLine();
-                    results += command + ": " + correct + "\n";
-                    m.put(correct );
-                    Comparable correctNum = sc.nextInt();
-                    Comparable output = m.min();
-                    results+= "\n"
-                            + " Answer should be: " + correctNum + ", Actual: " + output
-                            + ", Passed: " + (correctNum == output)
-                            + "\n";
-                    sc.nextLine();
-                }
-
-                if(command.equals("value")){
-                    Comparable popped = m.peek();
-                    m.pop();
-                    Comparable correctPop = sc.nextInt();
-                    results+= "\n"
-                            + " Answer should be: " + correctPop + ", Actual: " + popped
-                            + ", Passed: " + (correctPop == popped)
-                            + "\n";
-                    Comparable predictedMin = sc.nextInt();
-                    results+= "\n"
-                            + " Answer should be: " + predictedMin + ", Actual: " + m.min()
-                            + ", Passed: " + (predictedMin == m.min())
-                            + "\n";
-                    sc.nextLine();
-                }
-
-                if(command.equals("size")){
-                    Comparable popped = m.peek();
-                    m.pop();
-                    Comparable correctPop = sc.nextInt();
-                    results+= "\n"
-                            + " Answer should be: " + correctPop + ", Actual: " + popped
-                            + ", Passed: " + (correctPop == popped)
-                            + "\n";
-                    Comparable predictedMin = sc.nextInt();
-                    results+= "\n"
-                            + " Answer should be: " + predictedMin + ", Actual: " + m.min()
-                            + ", Passed: " + (predictedMin == m.min())
-                            + "\n";
-                    sc.nextLine();
-                }
-
-                if(command.equals("min")){
-                    Comparable popped = m.peek();
-                    m.pop();
-                    Comparable correctPop = sc.nextInt();
-                    results+= "\n"
-                            + " Answer should be: " + correctPop + ", Actual: " + popped
-                            + ", Passed: " + (correctPop == popped)
-                            + "\n";
-                    Comparable predictedMin = sc.nextInt();
-                    results+= "\n"
-                            + " Answer should be: " + predictedMin + ", Actual: " + m.min()
-                            + ", Passed: " + (predictedMin == m.min())
-                            + "\n";
-                    sc.nextLine();
-                }
-
-                if(command.equals("max")){
-                    Comparable toPush = sc.nextInt();
-                    results += command + ": " + toPush + "\n";
-                    m.push(toPush);
-                    Comparable correctNum = sc.nextInt();
-                    Comparable output = m.min();
-                    results+= "\n"
-                            + " Answer should be: " + correctNum + ", Actual: " + output
-                            + ", Passed: " + (correctNum == output)
-                            + "\n";
-                    sc.nextLine();
-                }
-
+                int key = sc.nextInt();
+                int value = sc.nextInt();
+                int size = sc.nextInt();
+                int min = sc.nextInt();
+                int max = sc.nextInt();
+                m.remove(key);
+                results+= "\n"
+                        + " Answer should be: " + value + ", Actual: " + m.remove(key)
+                        + "\n"
+                        + " Answer should be: " + size + ", Actual: " + m.size()
+                        + "\n"
+                        + " Answer should be: " + min + ", Actual: " + m.min()
+                        + "\n"
+                        + " Answer should be: " + max + ", Actual: " + m.max()
+                        + "\n";
             }
-            sc.close();
+
+
 
         }  catch(Exception e){
             results += "ERROR: " + e + "\n\n"; //Returns the type of error
         }
-
-
         //Makes logfile
         Scanner s = new Scanner(System.in);
         System.out.println("Enter in name for logfile: ");
