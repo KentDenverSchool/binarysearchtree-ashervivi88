@@ -1,0 +1,28 @@
+_______ BinarySearchTree Tests________
+Tests in format expected: actual: passed: true/false
+
+
+ Get should return: 20, Actual: 20
+ Size should return: 1, Actual: 1
+ Min should be: 1, Actual: 1
+ Max should be: 1, Actual: 1
+
+ Get should return: 21, Actual: 20
+ Size should return: 2, Actual: 3
+ Min should be: 1, Actual: 1
+ Max should be: 2, Actual: 4
+
+ Get should return: 22, Actual: 20
+ Size should return: 3, Actual: 4
+ Min should be: 1, Actual: 1
+ Max should be: 6, Actual: 4
+
+ Get should return: 23, Actual: 20
+ Size should return: 4, Actual: 5
+ Min should be: 1, Actual: 1
+ Max should be: 6, Actual: 6
+
+ Get should return: 22, Actual: 20
+ Size should return: 3, Actual: 5
+ Min should be: 1, Actual: 1
+ Max should be: 6, Actual: 6

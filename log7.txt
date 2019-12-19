@@ -1,0 +1,10 @@
+_______ BinarySearchTree Tests________
+Tests in format expected: actual: passed: true/false
+
+
+ Get should return: 20, Actual: 20
+ Size should return: 1, Actual: 1
+ Answer should be: 1, Actual: 1
+ Answer should be: 1, Actual: 1
+ERROR: java.lang.NullPointerException
+

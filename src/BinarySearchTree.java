@@ -1,3 +1,5 @@
+/***
+ ***/
 public class BinarySearchTree<Key extends Comparable<Key>, Value> {
 
     public Node<Key, Value> root;
@@ -10,6 +12,9 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
     }
 
     private int size(Node x) { //use Node's recursive size
+        if(x == null){
+            return 0;
+        }
         return x.getSize();
     }
 
@@ -25,7 +30,7 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
     //recursive put
     //sets left/right or creates a new node appropriately, returns the
     //modified node n
-    private Node<Key,Value> put(Node<Key, Value> n, Key key, Value val) {
+        private Node<Key,Value> put(Node<Key, Value> n, Key key, Value val) {
 
         Node<Key,Value> newNode = new Node(key, val, 1);
 
@@ -55,7 +60,6 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         else if(n.getKey().compareTo(key)> 0){
             n.setLeft(put(n.getLeft(), key, val));
         }
-
 
         n.setSize(size(n.getRight()) + size(n.getLeft()) + 1);
         return n;
@@ -88,11 +92,11 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         }
 
         else if(n.getKey().compareTo(key) < 0){
-            n.setRight(put(n.getRight(), key, n.getValue()));
+            n.setRight(put(n.getRight(), n.getKey(), n.getValue()));
         }
 
         else if(n.getKey().compareTo(key)> 0){
-            n.setLeft(put(n.getLeft(), key, n.getValue()));
+            n.setLeft(put(n.getLeft(), n.getKey(), n.getValue()));
         }
 
 
@@ -148,7 +152,7 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
     private Node<Key, Value> max(Node<Key, Value> n) {
         if(n.getRight() == null){
             return n;}
-        else return min(n.getRight());
+        else return max(n.getRight());
     }
 
     public String toString() {

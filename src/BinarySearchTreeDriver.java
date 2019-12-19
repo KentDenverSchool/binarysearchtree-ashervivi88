@@ -15,27 +15,30 @@ public class BinarySearchTreeDriver {
         try {
             //Tests method based on text file equations
             Scanner sc = new Scanner(file);
-            BinarySearchTree m = new BinarySearchTree();
+            BinarySearchTree<Integer, Integer> m = new BinarySearchTree();
 
             boolean hasSeen999 = false;
 
-            while (sc.hasNextLine() && sc.nextInt()!=-999) {
+            while (sc.hasNextLine()){
+
                 int key = sc.nextInt();
+                if(key != -999){
                 int value = sc.nextInt();
                 int size = sc.nextInt();
                 int min = sc.nextInt();
                 int max = sc.nextInt();
                 m.put(key, value);
+                    System.out.println(m);
                 results+= "\n"
-                        + " Answer should be: " + value + ", Actual: " + m.get(key)
+                        + " Get should return: " + value + ", Actual: " + m.get(key)
                         + "\n"
-                        + " Answer should be: " + size + ", Actual: " + m.size()
+                        + " Size should return: " + size + ", Actual: " + m.size()
                         + "\n"
-                        + " Answer should be: " + min + ", Actual: " + m.min()
+                        + " Min should be: " + min + ", Actual: " + m.min()
                         + "\n"
-                        + " Answer should be: " + max + ", Actual: " + m.max()
+                        + " Max should be: " + max + ", Actual: " + m.max()
                         + "\n";
-                }
+                }}
             while (sc.hasNextLine()) {
                 int key = sc.nextInt();
                 int value = sc.nextInt();
@@ -43,6 +46,7 @@ public class BinarySearchTreeDriver {
                 int min = sc.nextInt();
                 int max = sc.nextInt();
                 m.remove(key);
+                System.out.println(m);
                 results+= "\n"
                         + " Answer should be: " + value + ", Actual: " + m.remove(key)
                         + "\n"
@@ -64,7 +68,7 @@ public class BinarySearchTreeDriver {
         System.out.println("Enter in name for logfile: ");
         String filename = s.nextLine() + ".txt";
 
-        //write results to new file log.txt (need to delete before re-running test)
+        //write results to new file log.txt (need to delete before re-running test.txt)
         try (Writer writer = new BufferedWriter(new OutputStreamWriter(
                 new FileOutputStream(filename), "utf-8"))) {
             writer.write(results);
