@@ -1,4 +1,8 @@
 /***
+ * Ashley Kim
+ * 12/19/19
+ * The purpose of this code is to create a binary search tree that uses recursion to order key/value pairs to  either
+ * left or right sides of the tree
  ***/
 public class BinarySearchTree<Key extends Comparable<Key>, Value> {
 
@@ -7,11 +11,11 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
     public BinarySearchTree() {
     }
 
-    public int size() {
+    public int size() { //root version of size
         return size(root);
     }
 
-    private int size(Node x) { //use Node's recursive size
+    private int size(Node x) { //size using Node's recursive size
         if(x == null){
             return 0;
         }
@@ -94,13 +98,13 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         return get(key) != null;
     }
 
-    public Value remove(Key key) {
+    public Value remove(Key key) { //root version of remove method
         Value v = get(key);
         root = remove(root, key);
         return v;
     }
 
-    private Node remove(Node<Key, Value> n, Key key) {
+    private Node remove(Node<Key, Value> n, Key key) { //recursive remove method
         if(n == null) return null;
         int i = key.compareTo(n.getKey());
         if( i < 0) {
@@ -118,6 +122,7 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         return n;
     }
 
+    //returns smallest key value
     public Key min() {
         if(size() == 0 ){
             return null;
@@ -132,6 +137,7 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         else return min(n.getLeft());
     }
 
+    //returns largest key value
     public Key max() {
         if(size() == 0 ){
             return null;
@@ -146,12 +152,14 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         else return max(n.getRight());
     }
 
+    //root toString method
     public String toString() {
         String temp = toString(root);
         temp = temp.substring(0, temp.length()-2);
         return "{" + temp + "}";
     }
 
+    //recursive toString method
     private String toString(Node<Key, Value> n) {
         if(n == null) return "";
         return toString(n.getLeft()) +

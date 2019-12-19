@@ -17,9 +17,11 @@ public class BinarySearchTreeDriver {
             Scanner sc = new Scanner(file);
             BinarySearchTree<Integer, Integer> m = new BinarySearchTree();
 
+            //-999 is the signal that shows where to switch from putting to removing
             boolean hasSeen999 = false;
             int key = 0;
 
+            //adds when 999 key has not been seen
             while (sc.hasNextLine()&& key!= -999){
                 key = sc.nextInt();
                 if(key != -999){
@@ -39,6 +41,8 @@ public class BinarySearchTreeDriver {
                         + " Max should be: " + max + ", Actual: " + m.max()
                         + "\n";
                 }}
+
+            //the remove method is only triggered when -999 has been seen
             while (sc.hasNextLine()) {
                 key = sc.nextInt();
                 int value = sc.nextInt();
@@ -47,6 +51,9 @@ public class BinarySearchTreeDriver {
                         + " Removed value should be: " + value + ", Actual: " + m.remove(key)
                         + "\n"
                         + " Size should be: " + size + ", Actual: " + m.size();
+
+                //when size is zero, min and max output null, which is not an  integer, so results don't use a
+                //logfile max or min
                 if(size == 0){
                     results+= "\n"
                         + " Min should be: " + null + ", Actual: " + m.min()
