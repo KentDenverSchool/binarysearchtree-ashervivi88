@@ -73,36 +73,21 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
     //recursive get
     //returns null if the key does not exist
     private Value get(Node<Key, Value> n, Key key) {
-        if(n == null){
+        if (n == null) {
             return null;
-        }
-
-        else if(n.getKey().compareTo(key) < 0 &&
-                n.getRight() == null){
-                return null;
-        }
-
-        else if(n.getKey().compareTo(key) > 0 &&
-                n.getLeft() == null){
-                return null;
-        }
-
-        else if(n.getKey().compareTo(key) == 0){
+        } else if (n.getKey().compareTo(key) < 0 &&
+                n.getRight() == null) {
+            return null;
+        } else if (n.getKey().compareTo(key) > 0 &&
+                n.getLeft() == null) {
+            return null;
+        } else if (n.getKey().compareTo(key) == 0) {
             return n.getValue();
-        }
-
-        else if(n.getKey().compareTo(key) < 0){
-            n.setRight(put(n.getRight(), n.getKey(), n.getValue()));
-        }
-
-        else if(n.getKey().compareTo(key)> 0){
-            n.setLeft(put(n.getLeft(), n.getKey(), n.getValue()));
-        }
-
-
-        n.setSize(size(n.getRight()) + size(n.getLeft()) + 1);
-        return n.getValue();
-    }
+        } else if (n.getKey().compareTo(key) < 0) {
+            return get(n.getRight(), key);
+        } else {
+            return get(n.getLeft(), key);
+        }}
 
 
     public boolean contains(Key key) {
@@ -134,7 +119,10 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
     }
 
     public Key min() {
-        return min(root).getKey();
+        if(size() == 0 ){
+            return null;
+        }
+        else{return min(root).getKey();}
     }
 
     //returns the node at the left most left branch of n
@@ -145,7 +133,10 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
     }
 
     public Key max() {
-        return max(root).getKey();
+        if(size() == 0 ){
+            return null;
+        }
+        else return max(root).getKey();
     }
 
     //returns the node at the right most right branch of n

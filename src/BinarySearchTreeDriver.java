@@ -18,10 +18,10 @@ public class BinarySearchTreeDriver {
             BinarySearchTree<Integer, Integer> m = new BinarySearchTree();
 
             boolean hasSeen999 = false;
+            int key = 0;
 
-            while (sc.hasNextLine()){
-
-                int key = sc.nextInt();
+            while (sc.hasNextLine()&& key!= -999){
+                key = sc.nextInt();
                 if(key != -999){
                 int value = sc.nextInt();
                 int size = sc.nextInt();
@@ -40,23 +40,30 @@ public class BinarySearchTreeDriver {
                         + "\n";
                 }}
             while (sc.hasNextLine()) {
-                int key = sc.nextInt();
+                key = sc.nextInt();
                 int value = sc.nextInt();
                 int size = sc.nextInt();
-                int min = sc.nextInt();
-                int max = sc.nextInt();
-                m.remove(key);
-                System.out.println(m);
                 results+= "\n"
-                        + " Answer should be: " + value + ", Actual: " + m.remove(key)
+                        + " Removed value should be: " + value + ", Actual: " + m.remove(key)
                         + "\n"
-                        + " Answer should be: " + size + ", Actual: " + m.size()
+                        + " Size should be: " + size + ", Actual: " + m.size();
+                if(size == 0){
+                    results+= "\n"
+                        + " Min should be: " + null + ", Actual: " + m.min()
                         + "\n"
-                        + " Answer should be: " + min + ", Actual: " + m.min()
+                        + " Max should be: " + null + ", Actual: " + m.max()
+                        + "\n";}
+
+                else{
+                int max = sc.nextInt();
+                int min = sc.nextInt();
+                results+= "\n"
+                        + " Min should be: " + min + ", Actual: " + m.min()
                         + "\n"
-                        + " Answer should be: " + max + ", Actual: " + m.max()
+                        + " Max should be: " + max + ", Actual: " + m.max()
                         + "\n";
-            }
+                    System.out.println(m);
+                }}
 
 
 
